@@ -1,0 +1,25 @@
+{
+  "name": "backend_test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "dotenvx run -- tsx watch src/index.ts"
+  },
+  "keywords": [],
+  "author": "Naveen",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.60.0",
+    "@praha/byethrow": "^0.10.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "ts-pattern": "^5.9.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "tsx": "^4.21.0"
+  }
+}
