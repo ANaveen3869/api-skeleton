@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "dotenvx run -- tsx watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start" : "dotenvx run -- node dist/index.js"
   },
   "keywords": [],
   "author": "Naveen",

@@ -25,5 +25,11 @@ export function errorResponse(res, errors) {
         .with({ statusCode: 422 }, () => {
         return sendErrorResponse(res, 422, errors.message ?? "Validation failed", errors.errors);
     })
+        .with({ statusCode: 404 }, () => {
+        return sendErrorResponse(res, 404, errors.message);
+    })
+        .with({ statusCode: 409 }, () => {
+        return sendErrorResponse(res, 409, errors.message);
+    })
         .exhaustive();
 }

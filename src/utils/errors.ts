@@ -3,10 +3,10 @@ import { match } from "ts-pattern";
 import { $ZodIssue } from "zod/v4/core";
 import { Errors } from "../types/app.js";
 
-export function formatErrorMessages(issues : $ZodIssue[]){
-    const errors : Record<string ,string> = {};
-    for(const issue of issues){
-        const errorKey = issue.path[issue.path.length - 1 ] as string;
+export function formatErrorMessages(issues: $ZodIssue[]) {
+    const errors: Record<string, string> = {};
+    for (const issue of issues) {
+        const errorKey = issue.path[issue.path.length - 1] as string;
         const errorMsg = issue.message;
         errors[errorKey] = errorMsg;
     }
@@ -30,6 +30,12 @@ export function errorResponse(res: Response, errors: Errors) {
         })
         .with({ statusCode: 422 }, () => {
             return sendErrorResponse(res, 422, errors.message ?? "Validation failed", errors.errors);
+        })
+        .with({ statusCode: 404 }, () => {
+            return sendErrorResponse(res, 404, errors.message);
+        })
+        .with({ statusCode: 409 }, () => {
+            return sendErrorResponse(res, 409, errors.message);
         })
         .exhaustive()
 }
